@@ -58,7 +58,7 @@ class YouTubeDownloader
         return new GetVideoInfo($response);
     }
 
-    public function getPage($url)
+    public function getPage($url, $proxy)
     {
         $video_id = Utils::extractVideoId($url);
 
@@ -69,7 +69,7 @@ class YouTubeDownloader
                 'hl' => 'en',
                 'has_verified' => 1,
                 'bpctr' => 9999999999
-            ]));
+            ]), [], [], $proxy);
 
         return new WatchVideoPage($response);
     }
@@ -136,7 +136,7 @@ class YouTubeDownloader
      */
     public function getDownloadLinks($video_id, $options = array())
     {
-        $page = $this->getPage($video_id);
+        $page = $this->getPage($video_id, isset($options['proxy']) ? $options['proxy'] : null);
 
         if ($page->isTooManyRequests()) {
             throw new TooManyRequestsException($page);

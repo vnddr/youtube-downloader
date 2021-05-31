@@ -2,7 +2,7 @@
 
 namespace YouTube;
 
-use Curl\BrowserClient;
+use YouTube\BrowserClient;
 use YouTube\Utils\Utils;
 
 class Browser extends BrowserClient

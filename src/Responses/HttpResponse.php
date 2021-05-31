@@ -2,7 +2,7 @@
 
 namespace YouTube\Responses;
 
-use Curl\Response;
+use YouTube\Response;
 
 abstract class HttpResponse
 {
